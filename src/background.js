@@ -9,13 +9,13 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let win
+let win, second_win
 
 // Standard scheme must be registered before the app is ready
 protocol.registerStandardSchemes(['app'], { secure: true })
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({ width: 800, height: 600 })
+  win = new BrowserWindow({ width: 800, height: 600, x: 0, y: 0 })
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
@@ -32,6 +32,27 @@ function createWindow () {
   })
 }
 
+function createSecondWindow () {
+  // Create the browser window.
+  second_win = new BrowserWindow({ width: 800, height: 600, x: 800, y: 0 })
+
+  if (isDevelopment || process.env.IS_TEST) {
+    // Load the url of the dev server if in development mode
+    second_win.loadURL(process.env.WEBPACK_DEV_SERVER_URL+ '/second.html')
+    if (!process.env.IS_TEST) second_win.webContents.openDevTools()
+  } else {
+    createProtocol('app')
+    // Load the index.html when not in development
+    second_win.loadURL('app://./second.html')
+    second_win.webContents.openDevTools()
+  }
+
+  second_win.on('closed', () => {
+    second_win = null
+  })
+}
+
+
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
   // On macOS it is common for applications and their menu bar
@@ -47,6 +68,9 @@ app.on('activate', () => {
   if (win === null) {
     createWindow()
   }
+  if (second_win === null){
+    createSecondWindow()
+  }
 })
 
 // This method will be called when Electron has finished
@@ -58,6 +82,7 @@ app.on('ready', async () => {
     await installVueDevtools()
   }
   createWindow()
+  createSecondWindow()
 })
 
 // Exit cleanly on request from parent process in development mode.
