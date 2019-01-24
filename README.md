@@ -9,7 +9,17 @@ When setting up a vue-cli-plugin-electron-builder-project with 2 windows, the bu
 - vue-cli-plugin-electron-builder version : 1.0.0-rc.10
 - electron version: 4.0.0
 
+## Fix/workaround
+
+On this branch the problem was solved by:
+
+- renaming `index.html` to `main_window.html`
+- adjusting `vue.config.js` to use `main_window.html`
+- adjusting `createSecondWindow`-method inside `background.js`, to load `main_window.html`-file instead of `index.html`
+
 ## How to reproduce
+
+on branch master:
 
 ```
 yarn electron:build
