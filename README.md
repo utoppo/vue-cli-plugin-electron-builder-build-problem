@@ -1,3 +1,7 @@
+
+Update: See branch [simple_fix](https://github.com/utoppo/vue-cli-plugin-electron-builder-build-problem/tree/simple_fix) for a solution
+___
+
 # Electron build problem
 
 When setting up a vue-cli-plugin-electron-builder-project with 2 windows, the build process does not seem to work.
