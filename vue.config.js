@@ -7,8 +7,8 @@ module.exports = {
       chainWebpackRendererProcess: config => {
         config.entry('second_window').add(path.join(__dirname, '/src/second_window.js'));
         config.plugin('app').use(HtmlWebpackPlugin, [{
-          filename: 'index.html',
-          template: './public/index.html',
+          filename: 'main_window.html',
+          template: './public/main_window.html',
           templateParameters: {
             'BASE_URL': process.env.NODE_ENV === 'production' ? './' : '',
             'VUE_APP_NODE_MODULES_PATH': process.env.NODE_ENV === 'production' ? 'false' : '',
