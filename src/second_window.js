@@ -1,2 +1,2 @@
 // eslint-disable-next-line no-console
-console.log('--> background_window.js calling')
+console.log('--> second_window.js calling')

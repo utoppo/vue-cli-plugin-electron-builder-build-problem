@@ -10,6 +10,7 @@ module.exports = {
           filename: 'main_window.html',
           template: './public/main_window.html',
           templateParameters: {
+            'user': { name: 'Manfred'},
             'BASE_URL': process.env.NODE_ENV === 'production' ? './' : '',
             'VUE_APP_NODE_MODULES_PATH': process.env.NODE_ENV === 'production' ? 'false' : '',
             '__static': __dirname
@@ -20,6 +21,7 @@ module.exports = {
           filename: 'second.html',
           template: './public/second.html',
           templateParameters: {
+            'user': { name: 'Winfried'},
             'BASE_URL': process.env.NODE_ENV === 'production' ? './' : '',
             'VUE_APP_NODE_MODULES_PATH': process.env.NODE_ENV === 'production' ? 'false' : '',
             '__static': __dirname

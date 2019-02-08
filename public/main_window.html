@@ -11,7 +11,26 @@
     <noscript>
       <strong>We're sorry but buildfail doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <h1>Main</h1>
+    <% if (user) { %>
+      <h2>user.name: <%= user.name %></h2>
+    <% } %>
     <div id="app"></div>
+    <div id="emo"></div>
     <!-- built files will be auto injected -->
+    <script>
+      const emojis = require('emojis-list');
+      const electron = require('electron')
+      var remote = require('electron').remote
+      const app = remote.app
+      console.log('main window: app: ', app);
+      console.log(emojis[2]);
+      document.getElementById('emo').textContent=emojis[2];
+      </script>
+    <% if (typeof emojis !== 'undefined') { %>
+      emojis[2]
+    <% } else { %>
+      emojis not available as templateParameter at build time.
+    <% } %>
   </body>
 </html>

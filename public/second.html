@@ -8,11 +8,29 @@
     <title>Second Window</title>
   </head>
   <body>
-    <h1>Second Window</h1>
+    <h1>Second</h1>
+    <% if (user) { %>
+      <h2>user.name: <%= user.name %></h2>
+    <% } %>
     <noscript>
       <strong>We're sorry but this app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="second_app"></div>
+    <div id="emo"></div>
     <!-- built files will be auto injected -->
+    <script>
+      const emojis = require('emojis-list');
+      const electron = require('electron')
+      var remote = require('electron').remote
+      const app = remote.app
+      console.log('second widnow: app: ', app);
+      console.log(emojis[0]);
+      document.getElementById('emo').textContent=emojis[0];
+    </script>
+    <% if (typeof emojis !== 'undefined') { %>
+      emojis[0]
+    <% } else { %>
+      emojis not available as templateParameter at build time.
+    <% } %>
   </body>
 </html>
