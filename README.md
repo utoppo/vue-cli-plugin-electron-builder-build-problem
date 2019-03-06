@@ -1,5 +1,5 @@
 
-Update: See branch [simple_fix](https://github.com/utoppo/vue-cli-plugin-electron-builder-build-problem/tree/simple_fix) for a solution
+Update: This repository was created to illustrate a build problem. The problem has been fixed in the meantime. Therefore the workaround shown here does not work anymore and is not needed anymore. See: [https://github.com/nklayman/vue-cli-plugin-electron-builder/issues/182#issuecomment-469838147](https://github.com/nklayman/vue-cli-plugin-electron-builder/issues/182#issuecomment-469838147)
 ___
 
 # Electron build problem
